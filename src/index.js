@@ -24,6 +24,7 @@ var THREE = window.THREE = require('./lib/three');
 
 require('./components/index'); // Register standard components.
 require('./shaders/index'); // Register standard shaders.
+require('./systems/index'); // Register standard systems.
 
 var ANode = require('./core/a-node');
 var AEntity = require('./core/a-entity'); // Depends on ANode and core components.
