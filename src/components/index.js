@@ -13,6 +13,7 @@ require('./rotation');
 require('./scale');
 require('./shadow');
 require('./visible');
+require('./material');
 
 stubComponent('cursor');
 stubComponent('geometry');
@@ -22,7 +23,6 @@ stubComponent('laser-controls');
 stubComponent('line');
 stubComponent('link');
 stubComponent('look-controls');
-stubComponent('material');
 stubComponent('obj-model');
 stubComponent('raycaster');
 stubComponent('sound');
