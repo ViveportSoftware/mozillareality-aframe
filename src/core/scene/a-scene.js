@@ -333,7 +333,13 @@ module.exports.AScene = registerElement('a-scene', {
             // Capture promise to avoid errors.
             this.xrSession.end().then(function () {}, function () {});
             this.xrSession = undefined;
-            vrManager.setSession(null);
+            // HACK we used to null out the session here but now ThreeJS also does its own cleanup on session ending
+            // and expects this not to be null. The enter/exit logic in aframe could be cleaned up to deal with this,
+            // but we plan to get rid of all this code soon anyway so it doesn't seem worth it. The only benefit to
+            // nulling this out here is so that we don't retain the XRSession. The user is either about to exit the
+            // app, or will soon enter VR again (replacing it with a new XRSession) so this is not a very big deal.
+            // We also never call xrManager.getSession() so we don't care about its state.
+            // vrManager.setSession(null);
           } else {
             if (vrDisplay.isPresenting) {
               return vrDisplay.exitPresent().then(exitVRSuccess, exitVRFailure);
