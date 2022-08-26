@@ -2,6 +2,7 @@
 
 /* Centralized place to reference utilities since utils is exposed to the user. */
 var debug = require('./debug');
+var deepAssign = require('deep-assign');
 var device = require('./device');
 var objectAssign = require('object-assign');
 var objectPool = require('./object-pool');
@@ -12,6 +13,7 @@ module.exports.bind = require('./bind');
 module.exports.coordinates = require('./coordinates');
 module.exports.debug = debug;
 module.exports.device = device;
+module.exports.entity = require('./entity');
 module.exports.forceCanvasResizeSafariMobile = require('./forceCanvasResizeSafariMobile');
 module.exports.material = require('./material');
 module.exports.objectPool = objectPool;
@@ -114,6 +116,7 @@ module.exports.debounce = function (func, wait, immediate) {
  * @param  {...object} source - The object(s) from which properties will be copied.
  */
 module.exports.extend = objectAssign;
+module.exports.extendDeep = deepAssign;
 
 module.exports.clone = function (obj) {
   return JSON.parse(JSON.stringify(obj));
@@ -318,3 +321,6 @@ module.exports.findAllScenes = function (el) {
   }
   return matchingElements;
 };
+
+// Must be at bottom to avoid circular dependency.
+module.exports.srcLoader = require('./src-loader');

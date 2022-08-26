@@ -18,6 +18,7 @@ var AScene = require('./core/scene/a-scene').AScene;
 var components = require('./core/component').components;
 var registerComponent = require('./core/component').registerComponent;
 var registerGeometry = require('./core/geometry').registerGeometry;
+var registerPrimitive = require('./extras/primitives/primitives').registerPrimitive;
 var registerShader = require('./core/shader').registerShader;
 var registerSystem = require('./core/system').registerSystem;
 var shaders = require('./core/shader').shaders;
@@ -36,6 +37,10 @@ var AEntity = require('./core/a-entity'); // Depends on ANode and core component
 require('./core/a-assets');
 require('./core/a-mixin');
 
+// Extras.
+require('./extras/components/');
+require('./extras/primitives/');
+
 console.log('A-Frame Version: https://github.com/MozillaReality/aframe');
 console.log('three Version: https://github.com/MozillaReality/three.js');
 
@@ -50,8 +55,13 @@ module.exports = window.AFRAME = {
   registerComponent: registerComponent,
   registerElement: require('./core/a-register-element').registerElement,
   registerGeometry: registerGeometry,
+  registerPrimitive: registerPrimitive,
   registerShader: registerShader,
   registerSystem: registerSystem,
+  primitives: {
+    getMeshMixin: require('./extras/primitives/getMeshMixin'),
+    primitives: require('./extras/primitives/primitives').primitives
+  },
   scenes: require('./core/scene/scenes'),
   schema: require('./core/schema'),
   shaders: shaders,
