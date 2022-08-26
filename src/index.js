@@ -17,6 +17,7 @@ if (utils.device.isBrowserEnvironment) {
 var AScene = require('./core/scene/a-scene').AScene;
 var components = require('./core/component').components;
 var registerComponent = require('./core/component').registerComponent;
+var registerGeometry = require('./core/geometry').registerGeometry;
 var registerShader = require('./core/shader').registerShader;
 var registerSystem = require('./core/system').registerSystem;
 var shaders = require('./core/shader').shaders;
@@ -25,6 +26,7 @@ var systems = require('./core/system').systems;
 var THREE = window.THREE = require('./lib/three');
 
 require('./components/index'); // Register standard components.
+require('./geometries/index'); // Register standard geometries.
 require('./shaders/index'); // Register standard shaders.
 require('./systems/index'); // Register standard systems.
 
@@ -44,8 +46,10 @@ module.exports = window.AFRAME = {
   AScene: AScene,
   components: components,
   coreComponents: Object.keys(components),
+  geometries: require('./core/geometry').geometries,
   registerComponent: registerComponent,
   registerElement: require('./core/a-register-element').registerElement,
+  registerGeometry: registerGeometry,
   registerShader: registerShader,
   registerSystem: registerSystem,
   scenes: require('./core/scene/scenes'),

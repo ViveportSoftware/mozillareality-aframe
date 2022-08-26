@@ -14,9 +14,9 @@ require('./scale');
 require('./shadow');
 require('./visible');
 require('./material');
+require('./geometry');
 
 stubComponent('cursor');
-stubComponent('geometry');
 stubComponent('generic-tracked-controller-controls');
 stubComponent('hand-controls');
 stubComponent('laser-controls');
