@@ -17,7 +17,9 @@ if (utils.device.isBrowserEnvironment) {
 var AScene = require('./core/scene/a-scene').AScene;
 var components = require('./core/component').components;
 var registerComponent = require('./core/component').registerComponent;
+var registerShader = require('./core/shader').registerShader;
 var registerSystem = require('./core/system').registerSystem;
+var shaders = require('./core/shader').shaders;
 var systems = require('./core/system').systems;
 // Exports THREE to window so three.js can be used without alteration.
 var THREE = window.THREE = require('./lib/three');
@@ -44,9 +46,11 @@ module.exports = window.AFRAME = {
   coreComponents: Object.keys(components),
   registerComponent: registerComponent,
   registerElement: require('./core/a-register-element').registerElement,
+  registerShader: registerShader,
   registerSystem: registerSystem,
   scenes: require('./core/scene/scenes'),
   schema: require('./core/schema'),
+  shaders: shaders,
   systems: systems,
   THREE: THREE,
   utils: utils,
