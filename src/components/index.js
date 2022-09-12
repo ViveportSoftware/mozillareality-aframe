@@ -8,6 +8,7 @@ function stubComponent (name) {
   });
 }
 
+require('./camera');
 require('./position');
 require('./rotation');
 require('./scale');
